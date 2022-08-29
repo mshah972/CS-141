@@ -72,12 +72,56 @@ int main()
 	int maxChar = 5 + (number_of_tree_layers - 1) * 2; // this variable signifies a max number of character that will be printed in the last row of the tree
 
         
-        // Printing out the Plam Tree segments
+        /************************************************************
+                Code to print out the layers of the plam tree
+        *************************************************************/
         
-        for(int i = 1; i <= number_of_tree_layers; i++) // for loop to print each layer of plam tree one by one, and each section has 3 rows max
+        for(int i = 1; i <= number_of_tree_layers; i++)  // for loop to print each layer of plam tree one by one, and each section has 3 rows max
         {
-                
+             int reqFirstRSpace = maxChar / 2 - (i - 1) +1; // this will calculate how much space we need for each first row
+             int reqStars = 2 * i - 1; // this will calculate how many stars do we need for each row
+
+             for(int j = 1; j <= 3; j++) // for loop to print 3 row/layers of stars to make a plam tree
+             {
+                for(int m = 1; m <= reqFirstRSpace - j; m++) // this for loop is used to create required space in the beginning so it can form a triangle shape for plam tree
+                {
+                        cout << " ";
+                }
+
+                for(int m = 1; m <= reqStars + 2 * (j - 1); m++) // this for loop is used to print out the '*' after the required spaces are generated
+                {
+                        cout << "*";
+                }
+
+                cout << endl;
+             }
         }
+
+        /************************************************************
+                Code to print out the trunk of the plam tree
+        *************************************************************/
+
+        int trunkLength = 2 * number_of_tree_layers; /* this will multiply the number of layers of the tree by 2 so we can print out 2 layer trunk
+                                                        for eg: if we are printing 2 layers of '*' for the tree's upper layer we need 4 layers of trunk in total
+                                                        to make it look like a real tree.
+                                                     */
+
+        for(int i = 0; i < trunkLength; i++)    // for loop is used to print out the trunk lines '| | |' in a layer
+        {
+                for(int m = 1; m <= number_of_tree_layers; m++) // this for loop is used to create required space in the beginning so it can start print out the '|'
+                {
+                        cout << " ";
+                }
+
+                for(int m = 1; m < 3; m++)      // this for loop is used to print out '|' one by one for each layer
+                {
+                        cout << "|";
+                }
+
+                cout << endl;
+        }
+
+
 
     } //end if( menu_option == 2)
 
