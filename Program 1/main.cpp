@@ -69,13 +69,15 @@ int main()
         
 	cout << endl; //do not remove this line. It is essential for the autograder! 
 
-	
+	int maxChar = 5 + (number_of_tree_layers - 1) * 2; // this variable signifies a max number of character that will be printed in the last row of the tree
 
-	/***********************
-	 *
-	 * REPLACE ME WITH YOUR CODE
-	 *
-	 * *********************/
+        
+        // Printing out the Plam Tree segments
+        
+        for(int i = 1; i <= number_of_tree_layers; i++) // for loop to print each layer of plam tree one by one, and each section has 3 rows max
+        {
+                
+        }
 
     } //end if( menu_option == 2)
 
