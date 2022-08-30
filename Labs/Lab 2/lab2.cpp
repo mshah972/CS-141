@@ -18,13 +18,54 @@ int main() {
 
     cout << endl;
 
-    while(num <= userInput)     // while loop with a parameter where if num variable is less than the user input
+    /****************************************
+     * * *         Problem 1            * * *
+     ****************************************/
+
+    for(int i = 1; i <= userInput; ++i)
     {
-        for(int i = 1; i <= num; i++)   // for loop where it print out the numbers
+        for(int j = 1; j <= i; ++j)
         {
             cout << num << " ";
         }
-        num++;      // increment number variable
+        num++;
+        cout << "\n";
+    }
+
+
+    /****************************************
+     * * *         Problem 2            * * *
+     ****************************************/
+
+    for(int i = 1; i <= userInput; i++)
+    {
+        for(int j = 1; j <= i; j++)
+        {
+            cout << num << " ";
+            num++;
+        }
+
+        cout << endl;
+    }
+
+    
+    /****************************************
+     * * *         Problem 3            * * *
+     ****************************************/
+    
+    for (int i = 1; i <= userInput; i++)
+    {
+        for(int k = userInput - i; k > 0; k--)
+        {
+            cout << " ";
+        }
+      
+      
+        for (int j = 1; j <= i; j++)
+        {
+            cout << "*";
+        }
+
         cout << endl;
     }
 
