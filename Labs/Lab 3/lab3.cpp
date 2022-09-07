@@ -8,11 +8,13 @@ void program1(void);
 void program2(void);
 void program3(void);
 
-int p1 = 21, p2 = 14, p3 = 16, p4 = 18, p5 = 20, p6 = 22, p7 = 24, p8 = 26, p9 = 28;
+int p1, p2, p3, p4, p5, p6, p7, p8, p9;
 int userInput;
 
 int main() {
 
+    p1=12,p2=14,p3=16,p4=18,p5=20,p6=22,p7=24,p8=26,p9=28;
+    
     system("clear");
 
     cout << endl;
@@ -101,41 +103,65 @@ void program2 ()
     cout << "Enter a row you want to reverse: ";
     cin >> userInput;
 
+    // if(userInput == 1)
+    // {
+    //     cout << endl;
+    //     cout << "------- \n";
+    //     cout << "|" << p3 << "|" << p2 << "|" << p1 << "|\n";
+    //     cout << "------- \n";
+    //     cout << "|" << p4 << "|" << p5 << "|" << p6 << "|\n";
+    //     cout << "------- \n";
+    //     cout << "|" << p7 << "|" << p8 << "|" << p9 << "|\n";
+    //     cout << "------- "; 
+    //     cout << endl;
+    // }
+    // else if(userInput == 2)
+    // {
+    //     cout << endl;
+    //     cout << "------- \n";
+    //     cout << "|" << p1 << "|" << p2 << "|" << p3 << "|\n";
+    //     cout << "------- \n";
+    //     cout << "|" << p6 << "|" << p5 << "|" << p4 << "|\n";
+    //     cout << "------- \n";
+    //     cout << "|" << p7 << "|" << p8 << "|" << p9 << "|\n";
+    //     cout << "------- "; 
+    //     cout << endl;
+    // }
+    // else if(userInput == 3)
+    // {
+    //     cout << endl;
+    //     cout << "------- \n";
+    //     cout << "|" << p1 << "|" << p2 << "|" << p3 << "|\n";
+    //     cout << "------- \n";
+    //     cout << "|" << p4 << "|" << p5 << "|" << p6 << "|\n";
+    //     cout << "------- \n";
+    //     cout << "|" << p9 << "|" << p8 << "|" << p7 << "|\n";
+    //     cout << "------- "; 
+    //     cout << endl;
+    // }
+
+    // just updated the global variables instead of printing out the board again
     if(userInput == 1)
     {
-        cout << endl;
-        cout << "------- \n";
-        cout << "|" << p3 << "|" << p2 << "|" << p1 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p4 << "|" << p5 << "|" << p6 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p7 << "|" << p8 << "|" << p9 << "|\n";
-        cout << "------- "; 
-        cout << endl;
+        p1 = 16;
+        p2 = 14;
+        p3 = 12;
     }
     else if(userInput == 2)
     {
-        cout << endl;
-        cout << "------- \n";
-        cout << "|" << p1 << "|" << p2 << "|" << p3 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p6 << "|" << p5 << "|" << p4 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p7 << "|" << p8 << "|" << p9 << "|\n";
-        cout << "------- "; 
-        cout << endl;
+        p4 = 22;
+        p5 = 20;
+        p6 = 18;
     }
     else if(userInput == 3)
     {
-        cout << endl;
-        cout << "------- \n";
-        cout << "|" << p1 << "|" << p2 << "|" << p3 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p4 << "|" << p5 << "|" << p6 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p9 << "|" << p8 << "|" << p7 << "|\n";
-        cout << "------- "; 
-        cout << endl;
+        p7 = 28;
+        p8 = 26;
+        p9 = 24;
+    }
+    else
+    {
+        cout << "Invalid input" << endl;
     }
 
     cout << endl;
@@ -149,95 +175,58 @@ void program3 ()
 
     cout << endl;
     
-    int temp;
     int a, b;
-
-    temp = a;
-    a = b;
-    b = temp;
-
     cout << "Enter first row you want to swap: ";
     cin >> a;
 
     cout << "Enter second row you want to swap: ";
     cin >> b;
 
-    if(a == 1 && b == 2)
+    if(a == 1 && b == 2 || a == 2 && b == 1)
     {
-        cout << endl;
-        cout << "------- \n";
-        cout << "|" << p4 << "|" << p5 << "|" << p6 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p1 << "|" << p2 << "|" << p3 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p7 << "|" << p8 << "|" << p9 << "|\n";
-        cout << "------- "; 
-        cout << endl;
+        int temp1 = p1;
+        int temp2 = p2;
+        int temp3 = p3;
+
+        p1 = p4;
+        p2 = p5;
+        p3 = p6;
+        p4 = temp1;
+        p5 = temp2;
+        p6 = temp3;
     }
-    else if(a == 1 && b == 3)
+    else if(a == 1 && b == 3 || a == 3 && b == 1)
     {
-        cout << endl;
-        cout << "------- \n";
-        cout << "|" << p7 << "|" << p8 << "|" << p9 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p4 << "|" << p5 << "|" << p6 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p1 << "|" << p2 << "|" << p3 << "|\n";
-        cout << "------- "; 
-        cout << endl;
+        int temp1 = p1;
+        int temp2 = p2;
+        int temp3 = p3;
+
+        p1 = p7;
+        p2 = p8;
+        p3 = p9;
+        p7 = temp1;
+        p8 = temp2;
+        p9 = temp3;
+
     }
-    else if(a == 2 && b == 3)
+    else if(a == 2 && b == 3 || a == 3 && b == 2)
     {
-        cout << endl;
-        cout << "------- \n";
-        cout << "|" << p1 << "|" << p2 << "|" << p3 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p7 << "|" << p8 << "|" << p9 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p4 << "|" << p5 << "|" << p6 << "|\n";
-        cout << "------- "; 
-        cout << endl;
-    }
-    else if(a == 2 && b == 1)
-    {
-        cout << endl;
-        cout << "------- \n";
-        cout << "|" << p1 << "|" << p2 << "|" << p3 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p4 << "|" << p5 << "|" << p6 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p7 << "|" << p8 << "|" << p9 << "|\n";
-        cout << "------- "; 
-        cout << endl;
-    }
-    else if(a == 3 && b == 1)
-    {
-        cout << endl;
-        cout << "------- \n";
-        cout << "|" << p1 << "|" << p2 << "|" << p3 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p4 << "|" << p5 << "|" << p6 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p9 << "|" << p8 << "|" << p7 << "|\n";
-        cout << "------- "; 
-        cout << endl;
-    }
-    else if(a == 3 && b == 2)
-    {
-        cout << endl;
-        cout << "------- \n";
-        cout << "|" << p4 << "|" << p5 << "|" << p6 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p7 << "|" << p8 << "|" << p9 << "|\n";
-        cout << "------- \n";
-        cout << "|" << p1 << "|" << p2 << "|" << p3 << "|\n";
-        cout << "------- "; 
-        cout << endl;
-    }
+        int temp1 = p4;
+        int temp2 = p5;
+        int temp3 = p6;
+
+        p4 = p7;
+        p5 = p8;
+        p6 = p9;
+        p7 = temp1;
+        p8 = temp2;
+        p9 = temp3;
+    }    
     else
     {
         cout << "Invalid input" << endl;
     }
+
 
     cout << endl;
 }
