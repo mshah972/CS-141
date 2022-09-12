@@ -363,6 +363,19 @@ void initField(int num_of_mine) {
 //	Returns true if the cell has a mine (UNFLAGGED_MINE or FLAGGED_MINE)	
 bool isMine(int i, int j) {
 	//Complete me
+
+    for(int i = 0; i < height; i++)     // this for loop goes through the rows
+    {
+        for(int j = 0; j < width; j++)  // this for loop goes through the columns
+        {
+            if(getCell(i,j) == FLAGGED_MINE || getCell(i,j) == UNFLAGGED_MINE)  // if the cell is a stated as flagged or unflagged mine
+            {
+                return true;    // return true
+            }
+        }
+    }
+
+
 	return false;
 }
 
@@ -378,6 +391,7 @@ bool isMine(int i, int j) {
 //	None	 
 void reveal(int i,int j) {
 	//Complete me
+    
 }
 
 
