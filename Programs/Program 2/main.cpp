@@ -4,7 +4,7 @@
     
     Course: CS 141, Fall 2022.
     System: MacOS, Windows
-    Author: Dr. Sara Riazi
+    Author: Moksh Shah and Dr. Sara Riazi
 
 
 -------------------------------------------*/
@@ -72,9 +72,6 @@ void initField(int num_of_mine);
 bool isMine(int i, int j);
 void reveal(int i,int j); 
 void executeCmd(string cmd);
-
-
-
 
 
 
@@ -351,6 +348,18 @@ void setMine(int num_of_mine) {
 void initField(int num_of_mine) {
 	//Complete me
 
+	//We set all the cells to be UNKOWN
+	for (int i = 0; i < height; i++) 		// for loop to run through row 
+	{		
+		for (int j = 0; j < width; j++) 	// for loop to run through column
+		{
+			setCell(i,j, UNKNOWN);			// set all cells to be UNKNOWN
+		}
+	}
+
+	//We set some of the cells to be mine
+	setMine(num_of_mine);
+
 }
 
 
@@ -364,19 +373,18 @@ void initField(int num_of_mine) {
 bool isMine(int i, int j) {
 	//Complete me
 
-    for(int i = 0; i < height; i++)     // this for loop goes through the rows
-    {
-        for(int j = 0; j < width; j++)  // this for loop goes through the columns
-        {
-            if(getCell(i,j) == FLAGGED_MINE || getCell(i,j) == UNFLAGGED_MINE)  // if the cell is a stated as flagged or unflagged mine
-            {
-                return true;    // return true
-            }
-        }
-    }
+	for(int k = 0; k < height; i++) 	// for loop to run through row
+	{
+		for(int m = 0; m < width; j++)	// for loop to run through column
+		{
+			if(getCell(i,j) == UNFLAGGED_MINE || getCell(i,j) == FLAGGED_MINE)	// if cell is a mine
+			{
+				return true;	// return true
+			}
+		}
+	}
 
-
-	return false;
+	return false; 
 }
 
 //The reveal function set an appropriate values to each cell based on the player move.
@@ -391,7 +399,70 @@ bool isMine(int i, int j) {
 //	None	 
 void reveal(int i,int j) {
 	//Complete me
-    
+
+	if(isMine(i,j) == false)		// if cell is not a mine
+	{
+		int temp = 0;				// temp variable to store number of mines in surrounding cells
+
+		if(getCell(i - 1, j - 1) == UNFLAGGED_MINE)		// if cell is a mine
+		{
+			temp++;										// increment temp	
+		}
+
+		if(getCell(i - 1, j) == UNFLAGGED_MINE)			// if cell is a mine
+		{
+			temp++;										// increment temp
+		}
+
+		if(getCell(i - 1, j + 1) == UNFLAGGED_MINE)		// if cell is a mine
+		{
+			temp++;										// increment temp	
+		}
+
+		if(getCell(i, j - 1) == UNFLAGGED_MINE)			// if cell is a mine
+		{
+			temp++;										// increment temp		
+		}
+
+		if(getCell(i, j + 1) == UNFLAGGED_MINE)			// if cell is a mine
+		{
+			temp++;										// increment temp			
+		}
+
+		if(getCell(i + 1, j - 1) == UNFLAGGED_MINE)		// if cell is a mine
+		{
+			temp++;										// increment temp		
+		}
+
+		if(getCell(i + 1, j) == UNFLAGGED_MINE)			// if cell is a mine
+		{
+			temp++;										// increment temp		
+		}
+
+		if(getCell(i + 1, j + 1) == UNFLAGGED_MINE)		// if cell is a mine
+		{
+			temp++;										// increment temp		
+		}
+
+		setCell(i,j,temp);								// set cell to temp		
+	}
+
+
+	// using recursive function to reveal all surrounding cells if there is no mine in surrounding cells
+
+	if(getCell(i,j) == 0)		// if cell is 0
+	{
+		reveal(i - 1, j - 1);	// reveal surrounding cells
+		reveal(i - 1, j);
+		reveal(i - 1, j + 1);
+		reveal(i, j - 1);
+		reveal(i, j + 1);
+		reveal(i + 1, j - 1);
+		reveal(i + 1, j);
+		reveal(i + 1, j + 1);
+	}
+
+
 }
 
 
@@ -404,8 +475,43 @@ void reveal(int i,int j) {
 //	None  
 void executeCmd(string cmd) {
 	//Comeplete me
-}
 
+	if(cmd[0] == 'f')				// if command is f
+	{
+		int i = cmd[1] - '0';		// convert char to int
+		int j = cmd[2] - '0';		// convert char to int
+
+		if(getCell(i,j) == UNKNOWN)		// if cell is unknown
+		{
+			setCell(i,j,FLAGGED_MINE);	// set cell to flagged mine
+		}
+	}
+
+	if(cmd[0] == 'r')				// if command is r
+	{
+		int i = cmd[1] - '0';		// convert char to int
+		int j = cmd[2] - '0';		// convert char to int
+
+		if(getCell(i,j) == UNKNOWN)	// if cell is unknown
+		{
+			reveal(i,j);			// reveal cell
+		}
+	}
+
+	if(cmd[0] == 'u')				// if command is u
+	{
+		int i = cmd[1] - '0';		// convert char to int	
+		int j = cmd[2] - '0';		// convert char to int
+
+		if(getCell(i,j) == FLAGGED_MINE)	// if cell is flagged mine
+		{
+			setCell(i,j,UNKNOWN);	// set cell to unknown
+		}
+	}
+
+
+
+}
 
 
 //The main function of the program
